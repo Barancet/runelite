@@ -14,4 +14,6 @@ public class NewPlugin {
 
           //extend overlay class and add the enum class for monster IDs + names
     //think of the logic later
+
+    //more random stuff
     }
