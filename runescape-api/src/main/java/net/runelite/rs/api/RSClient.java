@@ -26,7 +26,6 @@ package net.runelite.rs.api;
 
 import java.util.Map;
 import net.runelite.api.Client;
-import net.runelite.api.IndexDataBase;
 import net.runelite.api.SpritePixels;
 import net.runelite.api.World;
 import net.runelite.api.widgets.Widget;
@@ -246,6 +245,14 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	void setUsername(String username);
 
+	@Import("password")
+	@Override
+	void setPassword(String password);
+
+	@Import("currentLoginField")
+	@Override
+	int getCurrentLoginField();
+
 	@Import("playerOptions")
 	@Override
 	String[] getPlayerOptions();
@@ -299,6 +306,9 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("menuActionParams1")
 	int[] getMenuActionParams1();
+
+	@Import("menuForceLeftClick")
+	boolean[] getMenuForceLeftClick();
 
 	@Import("worldList")
 	@Override
@@ -365,9 +375,53 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("createSprite")
 	RSSpritePixels createItemSprite(int itemId, int quantity, int thickness, int borderColor, int stackable, boolean noted);
 
-	@Import("getSpritesAsSpritePixels")
-	@Override
-	RSSpritePixels[] getSprites(IndexDataBase source, int archiveId, int fileId);
+	@Import("decodeSprite")
+	void decodeSprite(byte[] data);
+
+	@Import("indexedSpriteCount")
+	int getIndexedSpriteCount();
+
+	@Import("indexedSpriteWidth")
+	int getIndexedSpriteWidth();
+
+	@Import("indexedSpriteHeight")
+	int getIndexedSpriteHeight();
+
+	@Import("indexedSpriteOffsetXs")
+	int[] getIndexedSpriteOffsetXs();
+
+	@Import("indexedSpriteOffsetXs")
+	void setIndexedSpriteOffsetXs(int[] indexedSpriteOffsetXs);
+
+	@Import("indexedSpriteOffsetYs")
+	int[] getIndexedSpriteOffsetYs();
+
+	@Import("indexedSpriteOffsetYs")
+	void setIndexedSpriteOffsetYs(int[] indexedSpriteOffsetYs);
+
+	@Import("indexSpriteWidths")
+	int[] getIndexSpriteWidths();
+
+	@Import("indexSpriteWidths")
+	void setIndexSpriteWidths(int[] indexSpriteWidths);
+
+	@Import("indexedSpriteHeights")
+	int[] getIndexedSpriteHeights();
+
+	@Import("indexedSpriteHeights")
+	void setIndexedSpriteHeights(int[] indexedSpriteHeights);
+
+	@Import("spritePixels")
+	byte[][] getSpritePixels();
+
+	@Import("spritePixels")
+	void setSpritePixels(byte[][] spritePixels);
+
+	@Import("indexedSpritePalette")
+	int[] getIndexedSpritePalette();
+
+	@Import("indexedSpritePalette")
+	void setIndexSpritePalette(int[] indexSpritePalette);
 
 	@Import("indexSprites")
 	@Override
@@ -402,6 +456,10 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("chatLineMap")
 	@Override
 	Map getChatLineMap();
+
+	@Import("messages")
+	@Override
+	RSIterableHashTable getMessages();
 
 	@Import("revision")
 	@Override
@@ -442,9 +500,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("widgetRoot")
 	int getWidgetRoot();
 
-	@Import("mapAreaType")
+	@Import("mapElementConfigs")
 	@Override
-	RSArea[] getMapAreas();
+	RSMapElementConfig[] getMapElementConfigs();
 
 	@Import("mapscene")
 	@Override
@@ -727,6 +785,10 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	RSNodeCache getWidgetSpriteCache();
 
+	@Import("items")
+	@Override
+	RSNodeCache getItemCompositionCache();
+
 	@Import("oculusOrbState")
 	@Override
 	int getOculusOrbState();
@@ -738,6 +800,14 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("oculusOrbNormalSpeed")
 	@Override
 	void setOculusOrbNormalSpeed(int state);
+
+	@Import("lookingAtX")
+	@Override
+	int getOculusOrbFocalPointX();
+
+	@Import("lookingAtY")
+	@Override
+	int getOculusOrbFocalPointY();
 
 	RSItem getLastItemDespawn();
 
@@ -841,6 +911,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("graphicsPixelsHeight")
 	int getGraphicsPixelsHeight();
 
+	@Import("fillRectangle")
+	void RasterizerFillRectangle(int x, int y, int w, int h, int rgb);
+
 	@Import("startX")
 	int getStartX();
 
@@ -852,4 +925,48 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("endY")
 	int getEndY();
+
+	@Import("spellSelected")
+	@Override
+	void setSpellSelected(boolean selected);
+
+	@Import("getEnum")
+	RSEnum getRsEnum(int id);
+
+	@Import("menuX")
+	int getMenuX();
+
+	@Import("menuY")
+	int getMenuY();
+
+	@Import("menuHeight")
+	int getMenuHeight();
+
+	@Import("menuWidth")
+	int getMenuWidth();
+
+	@Import("fontBold12")
+	RSFont getFontBold12();
+
+	@Import("drawHorizontalLine")
+	void RasterizerDrawHorizontalLine(int x, int y, int w, int rgb);
+
+	@Import("drawVerticalLine")
+	void RasterizerDrawVerticalLine(int x, int y, int h, int rgb);
+
+	@Import("drawGradient")
+	void RasterizerDrawGradient(int x, int y, int w, int h, int rgbTop, int rgbBottom);
+
+	@Import("fillRectangleAlpha")
+	void RasterizerFillRectangleAlpha(int x, int y, int w, int h, int rgb, int a);
+
+	@Import("drawRectangle")
+	void RasterizerDrawRectangle(int x, int y, int w, int h, int rgb);
+
+	@Import("drawCircle")
+	void RasterizerDrawCircle(int x, int y, int r, int rgb);
+
+	@Import("healthbarCache")
+	@Override
+	RSNodeCache getHealthBarCache();
 }
