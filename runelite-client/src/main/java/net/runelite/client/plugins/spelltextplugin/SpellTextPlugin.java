@@ -25,7 +25,7 @@ public class SpellTextPlugin extends Plugin {
     private SpellTextOverlay overlay;
 
     @Inject
-    String test;
+    String spell;
 
 
     //private String menuTarget;
@@ -52,7 +52,7 @@ public class SpellTextPlugin extends Plugin {
 
         if (mentest.equals("Cast"))
         {
-            test = event.getMenuTarget();
+            spell = event.getMenuTarget();
             System.out.println(target);
         }
 

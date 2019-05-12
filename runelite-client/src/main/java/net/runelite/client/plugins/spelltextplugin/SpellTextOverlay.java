@@ -34,7 +34,7 @@ public class SpellTextOverlay extends Overlay {
 
         panelComponent.getChildren().add(LineComponent.builder()
                 .left("you casted: ")
-                .right(plugin.test.replace("</col>", " "))
+                .right(plugin.spell.replace("</col>", " "))
                 .build());
 
                 //System.out.println(plugin.getSpellCasted());
