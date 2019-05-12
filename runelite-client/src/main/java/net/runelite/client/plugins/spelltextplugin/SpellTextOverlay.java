@@ -7,6 +7,8 @@ import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.components.LineComponent;
 import net.runelite.client.ui.overlay.components.PanelComponent;
 
+
+
 import javax.inject.Inject;
 import java.awt.*;
 
@@ -29,15 +31,15 @@ public class SpellTextOverlay extends Overlay {
         panelComponent.getChildren().clear();
 
         panelComponent.setPreferredSize(new Dimension(
-                graphics.getFontMetrics().stringWidth("") + 150,
+                graphics.getFontMetrics().stringWidth("") + 180,
                 0));
 
         panelComponent.getChildren().add(LineComponent.builder()
                 .left("you casted: ")
-                .right(plugin.spell.replace("</col>", " "))
+                .right(plugin.spell)
                 .build());
 
-                //System.out.println(plugin.getSpellCasted());
+
         return panelComponent.render(graphics);
     }
 }
