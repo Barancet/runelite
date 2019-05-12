@@ -7,7 +7,7 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.api.events.MenuOptionClicked;
-
+import net.runelite.client.util.Text;
 import javax.inject.Inject;
 
 @PluginDescriptor(
@@ -47,12 +47,12 @@ public class SpellTextPlugin extends Plugin {
 
     @Subscribe
     public void onMenuOptionClicked(MenuOptionClicked event){
-        String mentest = event.getMenuOption();
+        String menuCheck= event.getMenuOption();
         String target = event.getMenuTarget();
 
-        if (mentest.equals("Cast"))
+        if (menuCheck.equals("Cast"))
         {
-            spell = event.getMenuTarget();
+            spell = Text.removeTags(event.getMenuTarget());
             System.out.println(target);
         }
 
