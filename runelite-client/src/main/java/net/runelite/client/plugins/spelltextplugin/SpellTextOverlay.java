@@ -7,8 +7,11 @@ import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.components.LineComponent;
 import net.runelite.client.ui.overlay.components.PanelComponent;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> SpellText Plugin
 import javax.inject.Inject;
 import java.awt.*;
 
@@ -31,15 +34,26 @@ public class SpellTextOverlay extends Overlay {
         panelComponent.getChildren().clear();
 
         panelComponent.setPreferredSize(new Dimension(
+<<<<<<< HEAD
                 graphics.getFontMetrics().stringWidth("") + 180,
+=======
+                graphics.getFontMetrics().stringWidth("") + 150,
+>>>>>>> SpellText Plugin
                 0));
 
         panelComponent.getChildren().add(LineComponent.builder()
                 .left("you casted: ")
+<<<<<<< HEAD
                 .right(plugin.spell)
                 .build());
 
 
+=======
+                .right(plugin.test.replace("</col>", " "))
+                .build());
+
+                //System.out.println(plugin.getSpellCasted());
+>>>>>>> SpellText Plugin
         return panelComponent.render(graphics);
     }
 }
